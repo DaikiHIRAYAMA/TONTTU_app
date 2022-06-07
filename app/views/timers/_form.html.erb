@@ -1,0 +1,20 @@
+<%= form_with(model: timer, local: true) do |form| %>
+  <% if timer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(timer.errors.count, "error") %> prohibited this timer from being saved:</h2>
+
+      <ul>
+        <% timer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>時間：</p>
+  
+
+  <div class="actions">
+    <%= form.submit "スタート"%>
+  </div>
+<% end %>
