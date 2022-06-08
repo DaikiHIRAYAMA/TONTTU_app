@@ -16,9 +16,9 @@
     <% @timers.each do |timer| %>
 
       <tr>
-        <td><%= (timer.sauna_finish_time - timer.sauna_start_time) %></td>
-        <td><%= (timer.water_finish_time - timer.water_start_time) %></td>
-        <td><%= (timer.outside_finish_time - timer.outside_start_time) %></td>
+        <td><%= (timer.sauna_finish_time - timer.sauna_start_time).ceil %>秒</td>
+        <td><%= (timer.water_finish_time - timer.water_start_time).ceil %>秒</td>
+        <td><%= (timer.outside_finish_time - timer.outside_start_time).ceil %>秒</td>
         <td><%= link_to 'Show', timer %></td>
         <td><%= link_to 'Edit', edit_timer_path(timer) %></td>
         <td><%= link_to 'Destroy', timer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
