@@ -1,5 +1,5 @@
 class TimersController < ApplicationController
-  before_action :set_timer, only: %i[ show edit update destroy ]
+  before_action :set_timer, only: %i[ show edit update destroy sauna_end water_start water_end outside_start outside_end update2 update3 update4 update5]
 
   # GET /timers or /timers.json
   def index
@@ -13,62 +13,73 @@ class TimersController < ApplicationController
   # GET /timers/new
   def new
     @timer = Timer.new
+  end
+  
+  # POST /timers or /timers.json
+  def create
+    @timer = Timer.new(timer_params)
     @timer.sauna_start_time = DateTime.now
+
+      if @timer.save
+        redirect_to sauna_end_timer_path(@timer)
+      else
+        flash.now[:alert] = 'メッセージを入力してください。'
+      end
   end
 
   def sauna_end
-    @timer = Timer.final
-    @timer.sauna_finish_time = DateTime.now
   end
 
+  # PATCH/PUT /timers/1 or /timers/1.json
+  def update
+    @timer.update(timer_params)
+    redirect_to water_start_timer_path(@timer)
+  end  
+  
+
   def water_start
-    @timer = Timer.final
-    @timer.water_start_time = DateTime.now
+  end
+
+  def update2
+    @timer.update(timer_params)
+    redirect_to water_end_timer_path(@timer)
   end
 
   def water_end
-    @timer = Timer.final
-    @timer.water_finish_time = DateTime.now
+  end
+
+  def update3
+    @timer.update(timer_params)
+    redirect_to outside_start_timer_path(@timer)
   end
 
   def outside_start
-    @timer = Timer.final
-    @timer.outside_start_time = DateTime.now
   end
+
+  def update4
+    @timer.update(timer_params)
+    redirect_to outside_end_timer_path(@timer)
+  end
+
 
   def outside_end
-    @timer = Timer.final
-    @timer.outside_finish_time = DateTime.now
-
   end
+
+  def update5
+    @timer.update(timer_params)
+    redirect_to timers_path(@timer)
+  end
+
+
 
   # GET /timers/1/edit
   def edit
   end
 
-  # POST /timers or /timers.json
-  def create
-    @timer = Timer.new(timer_params)
 
-      if @timer.save
-        redirect_to(new_timer_path)
-      else
-        flash.now[:alert] = 'メッセージを入力してください。'
-      end
-    end
 
-  # PATCH/PUT /timers/1 or /timers/1.json
-  def update
-    respond_to do |format|
-      if @timer.update(timer_params)
-        format.html { redirect_to timer_url(@timer), notice: "Timer was successfully updated." }
-        format.json { render :show, status: :ok, location: @timer }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @timer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+
+
 
   # DELETE /timers/1 or /timers/1.json
   def destroy
@@ -88,6 +99,6 @@ class TimersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def timer_params
-      params.fetch(:timer, {})
+      params.permit(:id, :sauna_start_time, :sauna_finish_time, :water_start_time, :water_finish_time, :outside_start_time, :outside_finish_time)
     end
 end

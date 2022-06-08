@@ -1,6 +1,7 @@
-<p>さうな入浴中</p>
-<p>残り時間：</p>
-<%= form_with(model: @timer, local: true) do |form| %>
+<p>water end</p>
+<p>水風呂入浴中</p>
+
+<%= form_for @timer, url: update3_timer_path(@timer) do |form| %>
   <% if @timer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@timer.errors.count, "error") %> prohibited this timer from being saved:</h2>
@@ -15,7 +16,7 @@
 
 
   <div class="actions">
-    <%= hidden_field_tag :sauna_finish_time, DateTime.now %>
-    <%= form.submit "サウナから出る"%>
+    <%= hidden_field_tag :water_finish_time, DateTime.now %>
+    <%= form.submit "水風呂から出る"%>
   </div>
   <% end %>

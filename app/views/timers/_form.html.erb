@@ -11,10 +11,11 @@
     </div>
   <% end %>
 
-  <p>時間：</p>
+  <p>Push "TOTONOU" to start</p>
   
 
   <div class="actions">
-    <%= form.submit "スタート"%>
+    <%= form.hidden_field :sauna_start_time, value: DateTime.now %>
+    <%= form.submit "TOTONOU"%>
   </div>
 <% end %>
