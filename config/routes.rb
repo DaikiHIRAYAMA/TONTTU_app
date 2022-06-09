@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+  resources :saunas
+  devise_for :users, :controllers => {
+    :confirmations => 'users/confirmations',
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
+    :passwords => 'users/passwords'
+   }
+
   resources :timers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root 'timers#index'
 
   resources :timers do
     member do
@@ -13,8 +23,11 @@ Rails.application.routes.draw do
       patch :update3, action: :update3
       patch :update4, action: :update4
       patch :update5, action: :update5
-
-
     end
   end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
 end

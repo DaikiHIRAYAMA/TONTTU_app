@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sauna.name %>
+</p>
+
+<p>
+  <strong>サウナ温度:</strong>
+  <%= @sauna.sauna_temperature %>度
+</p>
+
+<p>
+  <strong>サウナ湿度:</strong>
+  <%= @sauna.sauna_humidity %>%
+</p>
+
+<p>
+  <strong>水風呂水温:</strong>
+  <%= @sauna.water_temperature %>度
+</p>
+
+
+ <% fatigue = 2 %>
+ <% tc =  (50000 - 5000 * ( 3 - fatigue ) ) %>
+ <% ft =  37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) ) %>
+ <% ist = tc / ft %>
+ <% iwt = tc /(( 36.5 - @sauna.water_temperature  ) * ( ft - @sauna.water_temperature )) %>
+
+<p>
+  <strong>理想サウナ時間:</strong>
+  <%= ist.floor %>秒
+</p>
+
+<p>
+  <strong>理想水風呂時間:</strong>
+  <%= iwt.floor  %>秒
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_sauna_path(@sauna) %> |
+<%= link_to 'Back', saunas_path %>

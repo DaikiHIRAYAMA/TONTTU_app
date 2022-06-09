@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1></h1>
+
+<%= link_to 'サウナを登録する', new_sauna_path %>
+
+
+
+<table>
+<h2>過去に利用したサウナ</h2>
+
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>サウナ温度</th>
+      <th>サウナ湿度</th>
+      <th>水風呂温度</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @saunas.each do |sauna| %>
+      <tr>
+        <td><%= sauna.name %></td>
+        <td><%= sauna.sauna_temperature %>度</td>
+        <td><%= sauna.sauna_humidity %>%</td>
+        <td><%= sauna.water_temperature %>度</td>
+        <td><%= link_to '詳細', sauna %></td>
+        <td><%= link_to '編集', edit_sauna_path(sauna) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

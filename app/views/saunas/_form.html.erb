@@ -1,0 +1,44 @@
+
+<%= form_with(model: sauna, local: true) do |form| %>
+  <% if sauna.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sauna.errors.count, "error") %> prohibited this sauna from being saved:</h2>
+
+      <ul>
+        <% sauna.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "サウナ名" %>
+    <%= form.select :name,
+    {'NewJapan梅田': 'NewJapan梅田',
+    'サウナ&スパ カプセルホテル 大東洋': 'サウナ&スパ カプセルホテル 大東洋',
+    'サウナ&カプセル アムザ': 'サウナ&カプセル アムザ',
+    'なにわ健康ランド 湯〜トピア': 'なにわ健康ランド 湯〜トピア', 
+    'ユートピア白玉温泉': 'ユートピア白玉温泉' ,
+    }, { include_blank: '選択してください'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "サウナ温度" %>
+    <%= form.number_field :sauna_temperature %>
+  </div>
+
+  <div class="field">
+    <%= form.label "サウナ湿度" %>
+    <%= form.number_field :sauna_humidity %>
+  </div>
+
+  <div class="field">
+    <%= form.label "水風呂水温" %>
+    <%= form.number_field :water_temperature %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

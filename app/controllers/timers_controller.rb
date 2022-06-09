@@ -1,5 +1,8 @@
 class TimersController < ApplicationController
   before_action :set_timer, only: %i[ show edit update destroy sauna_end water_start water_end outside_start outside_end update2 update3 update4 update5]
+  before_action :set_sauna, only: %i[ sauna_end water_start water_end outside_start]
+
+  before_action :authenticate_user!
 
   # GET /timers or /timers.json
   def index
@@ -8,6 +11,7 @@ class TimersController < ApplicationController
 
   # GET /timers/1 or /timers/1.json
   def show
+    @sauna = Sauna.find(1)  ##絶対修正する‼！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
   end
 
   # GET /timers/new
@@ -17,11 +21,11 @@ class TimersController < ApplicationController
   
   # POST /timers or /timers.json
   def create
-    @timer = Timer.new(timer_params)
-    @timer.sauna_start_time = DateTime.now
+    @timer = Timer.new(timer_params0)
 
-      if @timer.save
+      if @timer.save!
         redirect_to sauna_end_timer_path(@timer)
+
       else
         flash.now[:alert] = 'メッセージを入力してください。'
       end
@@ -97,8 +101,16 @@ class TimersController < ApplicationController
       @timer = Timer.find(params[:id])
     end
 
+    def set_sauna
+      @sauna = Sauna.find(1)
+    end
+
     # Only allow a list of trusted parameters through.
     def timer_params
-      params.permit(:id, :sauna_start_time, :sauna_finish_time, :water_start_time, :water_finish_time, :outside_start_time, :outside_finish_time)
+      params.permit(:sauna_id, :sauna_start_time, :sauna_finish_time, :water_start_time, :water_finish_time, :outside_start_time, :outside_finish_time)
+    end
+
+    def timer_params0
+      params.require(:timer).permit(:sauna_start_time, :sauna_id)
     end
 end

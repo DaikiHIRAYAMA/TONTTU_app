@@ -1,4 +1,45 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_timer_path(@timer) %> |
+<p>
+  <strong>日時:</strong>
+  <%= @timer.created_at.strftime("%Y年%m月%d日").to_s %>
+</p>
+
+<p>
+  <strong>場所:</strong>
+  <%= @sauna.name %>
+</p>
+
+<p>
+  <strong>サウナ室温度:</strong>
+  <%= @sauna.sauna_temperature %>
+</p>
+
+<p>
+  <strong>サウナ室湿度:</strong>
+  <%= @sauna.sauna_humidity %>
+</p>
+
+<p>
+  <strong>サウナ室時間:</strong>
+  <%= (@timer.sauna_finish_time - @timer.sauna_start_time).ceil %>秒
+</p>
+
+<p>
+  <strong>水風呂温度:</strong>
+  <%= @sauna.water_temperature %>
+</p>
+
+<p>
+  <strong>水風呂時間:</strong>
+  <%= (@timer.water_finish_time - @timer.water_start_time).ceil %>秒
+</p>
+
+<p>
+  <strong>外気浴時間:</strong>
+  <%= (@timer.outside_finish_time - @timer.outside_start_time).ceil %>秒
+</p>
+
+
+
+
 <%= link_to 'Back', timers_path %>

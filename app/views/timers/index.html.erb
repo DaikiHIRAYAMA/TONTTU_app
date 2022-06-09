@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Timers</h1>
+<h1>ととのいログ</h1>
 
 <table>
   <thead>
@@ -20,7 +19,6 @@
         <td><%= (timer.water_finish_time - timer.water_start_time).ceil %>秒</td>
         <td><%= (timer.outside_finish_time - timer.outside_start_time).ceil %>秒</td>
         <td><%= link_to 'Show', timer %></td>
-        <td><%= link_to 'Edit', edit_timer_path(timer) %></td>
         <td><%= link_to 'Destroy', timer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -28,5 +26,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Timer', new_timer_path %>

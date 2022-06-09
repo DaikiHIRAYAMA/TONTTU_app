@@ -1,3 +1,20 @@
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+  </head>
+  <style>
+  .main {
+    margin: 0 auto;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+  }
+</style>
+  <body>
+
 <p>water end</p>
 <p>水風呂入浴中</p>
 
@@ -14,9 +31,29 @@
     </div>
   <% end %>
 
+  <div class="main container">
+    <h2><span id="result" class="badge bg-primary">カウントダウン</span></h2>
+  </div>
 
   <div class="actions">
     <%= hidden_field_tag :water_finish_time, DateTime.now %>
     <%= form.submit "水風呂から出る"%>
   </div>
   <% end %>
+
+    <script>
+  function hoge() {
+    for (let i = 0; i < '<%= ( (50000 - 5000 * ( 3 - 2 ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>'; i++) {
+      // result.textContentはdocument.getElementById('result');を省略
+      setTimeout(() => { result.textContent = ('<%= ( (50000 - 5000 * ( 3 - 2 ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>' - i); }, i * 1000);
+    }
+    if(hasEmptyInput) {
+    alert('理想の時間を超えました');
+  }
+  }
+  window.onload = () => { hoge(); };
+  </script>
+
+  </body>
+  </html>
+
