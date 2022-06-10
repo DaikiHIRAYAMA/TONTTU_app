@@ -20,20 +20,18 @@
   <%= @sauna.water_temperature %>度
 </p>
 
-
- <% fatigue = 2 %>
- <% tc =  (50000 - 5000 * ( 3 - fatigue ) ) %>
+ <% tc =  (50000 - 5000 * ( 3 ) ) %>
  <% ft =  37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) ) %>
  <% ist = tc / ft %>
  <% iwt = tc /(( 36.5 - @sauna.water_temperature  ) * ( ft - @sauna.water_temperature )) %>
 
 <p>
-  <strong>理想サウナ時間:</strong>
+  <strong>平常時　理想サウナ時間:</strong>
   <%= ist.floor %>秒
 </p>
 
 <p>
-  <strong>理想水風呂時間:</strong>
+  <strong>平常時　理想水風呂時間:</strong>
   <%= iwt.floor  %>秒
 </p>
 

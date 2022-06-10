@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_062723) do
+ActiveRecord::Schema.define(version: 2022_06_10_081112) do
 
   create_table "saunas", force: :cascade do |t|
     t.string "name", default: "平均的なサウナ", null: false
@@ -19,8 +19,13 @@ ActiveRecord::Schema.define(version: 2022_06_09_062723) do
     t.integer "water_temperature", default: 20, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "timer_id"
-    t.index ["timer_id"], name: "index_saunas_on_timer_id"
+  end
+
+  create_table "saunas_timers", force: :cascade do |t|
+    t.integer "sauna_id", null: false
+    t.integer "timer_id", null: false
+    t.index ["sauna_id"], name: "index_saunas_timers_on_sauna_id"
+    t.index ["timer_id"], name: "index_saunas_timers_on_timer_id"
   end
 
   create_table "timers", force: :cascade do |t|
@@ -34,8 +39,8 @@ ActiveRecord::Schema.define(version: 2022_06_09_062723) do
     t.datetime "water_deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "sauna_id"
-    t.index ["sauna_id"], name: "index_timers_on_sauna_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_timers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_06_09_062723) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "saunas", "timers"
-  add_foreign_key "timers", "saunas"
+  add_foreign_key "saunas_timers", "saunas"
+  add_foreign_key "saunas_timers", "timers"
+  add_foreign_key "timers", "users"
 end

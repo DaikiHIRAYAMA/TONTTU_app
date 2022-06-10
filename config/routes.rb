@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :passwords => 'users/passwords'
    }
+  devise_scope :user do
+    get 'mypage', to: 'users/registrations#show', as: :mypage_registration
+  end
 
   resources :timers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
