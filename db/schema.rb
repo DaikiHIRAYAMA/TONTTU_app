@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_10_081112) do
+ActiveRecord::Schema.define(version: 2022_06_12_132329) do
 
   create_table "saunas", force: :cascade do |t|
     t.string "name", default: "平均的なサウナ", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2022_06_10_081112) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "sauna_id"
     t.index ["user_id"], name: "index_timers_on_user_id"
   end
 

@@ -13,12 +13,13 @@ class TimersController < ApplicationController
 
   # GET /timers/1 or /timers/1.json
   def show
-    @sauna = Sauna.last  ##絶対修正する‼！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    @sauna = Sauna.find(@timer.sauna_id) 
   end
 
   # GET /timers/new
   def new
     @timer = Timer.new
+    @sauna = Sauna.last
   end
   
   # POST /timers or /timers.json
@@ -119,6 +120,10 @@ class TimersController < ApplicationController
     end
 
     def timer_params0
-      params.require(:timer).permit(:sauna_start_time, :id)
+      params.require(:timer).permit(:sauna_start_time, :sauna_id, :id)
+    end
+
+    def sauna_params
+      params.permit(:sauna_id)
     end
 end
