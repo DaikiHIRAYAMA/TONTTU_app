@@ -20,6 +20,8 @@ class TimersController < ApplicationController
   def new
     @timer = Timer.new
     @sauna = Sauna.last
+    render :layout => false
+
   end
   
   # POST /timers or /timers.json
@@ -37,6 +39,7 @@ class TimersController < ApplicationController
   end
 
   def sauna_end
+    render :layout => false
   end
 
   # PATCH/PUT /timers/1 or /timers/1.json
@@ -47,6 +50,7 @@ class TimersController < ApplicationController
   
 
   def water_start
+    render :layout => false
   end
 
   def update2
@@ -55,6 +59,7 @@ class TimersController < ApplicationController
   end
 
   def water_end
+    render :layout => false
   end
 
   def update3
@@ -63,6 +68,7 @@ class TimersController < ApplicationController
   end
 
   def outside_start
+    render :layout => false
   end
 
   def update4
@@ -72,6 +78,7 @@ class TimersController < ApplicationController
 
 
   def outside_end
+    render :layout => false
   end
 
   def update5

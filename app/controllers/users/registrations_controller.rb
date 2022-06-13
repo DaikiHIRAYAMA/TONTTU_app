@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
    before_action :configure_sign_up_params, only: [:create]
    before_action :configure_account_update_params, only: [:update, :show]
-
+  # before_action :correct_user, only: [:show]
   # GET /resource/sign_up
    def new
      super
@@ -41,6 +41,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def cancel
      super
    end
+
+   private
+
+   def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to current_user unless current_user?(@user)
+  end
 
    protected
 

@@ -1,20 +1,36 @@
 
-<h1>ととのいログ</h1>
 
-<table>
+<!doctype html>
+<html lang="jp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Timer index</title>
+  </head>
+
+<body>
+<h1 class="text-center">ととのいログ</h1>
+<table class="table table-hover ">
   <thead>
     <tr>
-      <th>サウナ時間</th>
-      <th>水風呂時間</th>
-      <th>外気浴時間</th>
+      <th scope="col ">日付</th>
+      <th scope="col">サウナ時間</th>
+      <th scope="col">水風呂時間</th>
+      <th scope="col">外気浴時間</th>
+      <th scope="col">詳細</th>
+      <th scope="col">削除</th>
 
     </tr>
   </thead>
-
   <tbody>
-    <% @timers.each do |timer| %>
-
+        <% @timers.each do |timer| %>
       <tr>
+        <td><%= timer.created_at.strftime("%Y年%m月%d日") %></td>
         <td><%= (timer.sauna_finish_time - timer.sauna_start_time).ceil %>秒</td>
         <td><%= (timer.water_finish_time - timer.water_start_time).ceil %>秒</td>
         <td><%= (timer.outside_finish_time - timer.outside_start_time).ceil %>秒</td>
@@ -24,5 +40,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
+  </body>
+</html>

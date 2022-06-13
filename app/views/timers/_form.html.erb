@@ -1,3 +1,4 @@
+<html>
 <%= form_with(model: timer, local: true) do |form| %>
   <% if timer.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +12,54 @@
     </div>
   <% end %>
 
-  <p>Push "TOTONOU" to start</p>
-  
+
+     <h3 class="text-center ">Push "TOTONOU" to start</h3>
 
   <div class="actions">
     <%= form.hidden_field :sauna_id, value: @sauna.id %>
     <%= form.hidden_field :sauna_start_time, value: DateTime.now %>
-    <%= form.submit "TOTONOU"%>
+   <p class="text-center "><%= form.submit "TOTONOU" , class: " btn btn-malformation btn-outline-danger" %></p>
   </div>
+
 <% end %>
+
+<style>
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+</style>
+</html>

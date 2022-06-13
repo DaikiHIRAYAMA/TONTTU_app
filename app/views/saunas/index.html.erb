@@ -1,20 +1,41 @@
-<p id="notice"><%= notice %></p>
+<!doctype html>
+<html lang="jp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<h1></h1>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<%= link_to 'サウナを登録する', new_sauna_path %>
+    <title>Timer index</title>
+  </head>
 
 
 
-<table>
-<h2>過去に利用したサウナ</h2>
+<body>
 
+<h3 class="text-center">NEXT SAUNA </h3>
+<h2 class="text-center"> "<%= @saunas.last.name %>"</h2>
+<p class="text-center">温度:<%= @saunas.last.sauna_temperature %>度 湿度:<%= @saunas.last.sauna_humidity %>% 水温:<%= @saunas.last.water_temperature %>度</p>
+
+<hr style="border:none;border-top:dashed 2px black;height:1px;width:100%;">
+
+
+<p class="text-center"><%= link_to 'サウナを登録する', new_sauna_path ,class: " btn btn-malformation btn-outline-danger" %></p>
+
+<hr style="border:none;border-top:dashed 2px black;height:1px;width:100%;">
+
+
+<h3 class="text-center">過去に利用したサウナ</h3>
+<table class="table table-hover ">
   <thead>
     <tr>
       <th>名前</th>
       <th>サウナ温度</th>
       <th>サウナ湿度</th>
       <th>水風呂温度</th>
+      <th>詳細</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,8 +47,7 @@
         <td><%= sauna.sauna_temperature %>度</td>
         <td><%= sauna.sauna_humidity %>%</td>
         <td><%= sauna.water_temperature %>度</td>
-        <td><%= link_to '詳細', sauna %></td>
-        <td><%= link_to '編集', edit_sauna_path(sauna) %></td>
+        <td><%= link_to 'show', sauna %></td>
 
       </tr>
     <% end %>
@@ -36,3 +56,5 @@
 
 <br>
 
+  </body>
+</html>

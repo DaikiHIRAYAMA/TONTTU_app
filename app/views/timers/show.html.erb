@@ -1,45 +1,94 @@
+<!doctype html>
+<html lang="jp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<p>
-  <strong>日時:</strong>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Timers show</title>
+  </head>
+
+  <body>
+<h5 class="text-center">
   <%= @timer.created_at.strftime("%Y年%m月%d日").to_s %>
-</p>
+</h5>
 
-<p>
-  <strong>場所:</strong>
-  <%= @sauna.name %>
-</p>
+<h2 class="text-center"> "<%= @sauna.name %>"</h2>
 
-<p>
-  <strong>サウナ室温度:</strong>
-  <%= @sauna.sauna_temperature %>
-</p>
-
-<p>
-  <strong>サウナ室湿度:</strong>
-  <%= @sauna.sauna_humidity %>
-</p>
-
-<p>
-  <strong>サウナ室時間:</strong>
-  <%= (@timer.sauna_finish_time - @timer.sauna_start_time).ceil %>秒
-</p>
-
-<p>
-  <strong>水風呂温度:</strong>
-  <%= @sauna.water_temperature %>
-</p>
-
-<p>
-  <strong>水風呂時間:</strong>
-  <%= (@timer.water_finish_time - @timer.water_start_time).ceil %>秒
-</p>
-
-<p>
-  <strong>外気浴時間:</strong>
-  <%= (@timer.outside_finish_time - @timer.outside_start_time).ceil %>秒
-</p>
+<p class="text-center">温度:<%= @sauna.sauna_temperature %>度 湿度:<%= @sauna.sauna_humidity %>% 水温:<%= @sauna.water_temperature %>度</p>
 
 
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100 b-color1">
+      <img src="/sauna.png" class="card-img-top image_size_m0" alt="sauna" style="display: block; margin: auto;">
+      <div class="card-body">
+        <h5 class="card-title text-center">サウナ室時間</h5>
+        <h2 class="card-text text-center"><%= (@timer.sauna_finish_time - @timer.sauna_start_time).ceil %>秒</h2>
+      </div>
+
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100 b-color2">
+      <img src="/water.png" class="card-img-top image_size_m1 " alt="water" style="display: block; margin: auto;" >
+      <div class="card-body">
+        <h5 class="card-title text-center">水風呂時間</h5>
+        <h2 class="card-text text-center"> <%= (@timer.water_finish_time - @timer.water_start_time).ceil %>秒</h2>
+      </div>
+
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100 b-color3">
+      <img src="/outside.png" class="card-img-top image_size_m2 " alt="outside" style="display: block; margin: auto;" >
+      <div class="card-body">
+        <h5 class="card-title text-center">外気浴時間</h5>
+        <h2 class="card-text text-center"> <%= (@timer.outside_finish_time - @timer.outside_start_time).ceil %>秒</h2>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
-<%= link_to 'Back', timers_path %>
+<br>
+<h3 class="text-center"><%= link_to 'Back', saunas_path %></h3>
+
+  </body>
+    <style>
+.image_size_m0{
+	width: 120px;
+	height: 150px;
+  padding-top: 10px;
+}
+  .image_size_m1{
+	width: 150px;
+	height: 150px;	
+}
+  .image_size_m2{
+	width: 120px;
+	height: 150px;	
+  padding-top: 10px;
+
+}
+div.b-color1 {
+ border-color: red;
+ border-style: solid;
+  border-width: 2px;
+}
+div.b-color2 {
+ border-color: blue;
+ border-style: solid;
+ border-width: 2px;
+}
+div.b-color3 {
+ border-color: green;
+ border-style: solid;
+ border-width: 2px;
+}
+  </style>
+</html>
