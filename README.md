@@ -13,6 +13,7 @@
  $ cd TONTTU
  $ bundle install
  $ rails db:create && db:migrate
+ $ rails db:seed
  $ rails s 
  ```
  
