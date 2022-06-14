@@ -27,7 +27,11 @@
 <hr style="border:none;border-top:dashed 2px black;height:1px;width:100%;">
 
 
-<h3 class="text-center">過去に利用したサウナ</h3>
+    <% if @saunas.last.name == "サウナ" %>
+    <h3 class="text-center" style="color:red"> これから入浴するサウナを入力して下さい</h3>
+    <% else %>
+    <h3 class="text-center">過去に利用したサウナ</h3>
+    <% end %>
 <table class="table table-hover ">
   <thead>
     <tr>
@@ -48,9 +52,10 @@
         <td><%= sauna.sauna_humidity %>%</td>
         <td><%= sauna.water_temperature %>度</td>
         <td><%= link_to 'show', sauna %></td>
-
       </tr>
     <% end %>
+
+
   </tbody>
 </table>
 

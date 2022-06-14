@@ -1,5 +1,27 @@
-<h1>New Sauna</h1>
+<!doctype html>
+<html lang="jp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Sauna Registration</title>
+  </head>
+  <body>
+
+<h1 class="text-center">New Sauna Registration</h1>
 
 <%= render 'form', sauna: @sauna %>
 
-<%= link_to 'Back', saunas_path %>
+
+<% unless Sauna.where(user_id: current_user.id).count == 0 %>
+<h3 class="text-center"><%= link_to 'Back', saunas_path %></h3>
+<% end %>
+
+
+
+</body>
+</html>

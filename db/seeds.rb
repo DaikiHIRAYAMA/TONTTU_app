@@ -11,4 +11,6 @@ Sauna.create!(
     sauna_temperature: "90" ,
     sauna_humidity: "10",
     water_temperature: "18",
+    user_id: "1",
+
 )

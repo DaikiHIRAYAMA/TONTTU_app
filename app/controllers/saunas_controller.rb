@@ -1,9 +1,10 @@
 class SaunasController < ApplicationController
   before_action :set_sauna, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /saunas or /saunas.json
   def index
-    @saunas = Sauna.all
+    @saunas = Sauna.where(user_id: current_user.id)
   end
 
   # GET /saunas/1 or /saunas/1.json
@@ -13,6 +14,7 @@ class SaunasController < ApplicationController
   # GET /saunas/new
   def new
     @sauna = Sauna.new
+    render :layout => false
   end
 
   # GET /saunas/1/edit
@@ -65,6 +67,6 @@ class SaunasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sauna_params
-      params.require(:sauna).permit(:name, :sauna_temperature, :sauna_humidity, :water_temperature)
+      params.require(:sauna).permit(:name, :sauna_temperature, :sauna_humidity, :water_temperature, :user_id)
     end
 end

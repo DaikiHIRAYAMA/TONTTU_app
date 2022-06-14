@@ -1,14 +1,15 @@
 class TimersController < ApplicationController
   before_action :set_timer, only: %i[ show edit update destroy sauna_end water_start water_end outside_start outside_end update2 update3 update4 update5]
   before_action :set_sauna, only: %i[ sauna_end water_start water_end outside_start]
-  before_action :set_user, only: %i[ sauna_end water_start water_end outside_start]
+  before_action :set_user, only: %i[ new create sauna_end water_start water_end outside_start]
 
 
   before_action :authenticate_user!
 
   # GET /timers or /timers.json
   def index
-    @timers = Timer.all
+     @timers = Timer.where(user_id: current_user.id)
+   # @timers = Timer.all
   end
 
   # GET /timers/1 or /timers/1.json
@@ -118,19 +119,20 @@ class TimersController < ApplicationController
     end
     
     def set_user
-      @user = User.find(1)
+      @user = current_user
     end
 
     # Only allow a list of trusted parameters through.
     def timer_params
-      params.permit(:sauna_id, :sauna_start_time, :sauna_finish_time, :water_start_time, :water_finish_time, :outside_start_time, :outside_finish_time)
+      params.permit(:user_id, :sauna_id, :sauna_start_time, :sauna_finish_time, :water_start_time, :water_finish_time, :outside_start_time, :outside_finish_time)
     end
 
     def timer_params0
-      params.require(:timer).permit(:sauna_start_time, :sauna_id, :id)
+      params.require(:timer).permit(:sauna_start_time, :sauna_id, :id , :user_id)
     end
 
     def sauna_params
       params.permit(:sauna_id)
     end
+
 end

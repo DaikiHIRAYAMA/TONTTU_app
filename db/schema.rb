@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_12_132329) do
+ActiveRecord::Schema.define(version: 2022_06_14_035749) do
 
   create_table "saunas", force: :cascade do |t|
     t.string "name", default: "平均的なサウナ", null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_06_12_132329) do
     t.integer "water_temperature", default: 20, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "saunas_timers", force: :cascade do |t|
