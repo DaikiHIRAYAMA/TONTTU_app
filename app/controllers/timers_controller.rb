@@ -3,7 +3,6 @@ class TimersController < ApplicationController
   before_action :set_sauna, only: %i[ sauna_end water_start water_end outside_start]
   before_action :set_user, only: %i[ new create sauna_end water_start water_end outside_start]
 
-
   before_action :authenticate_user!
 
   # GET /timers or /timers.json
@@ -134,5 +133,6 @@ class TimersController < ApplicationController
     def sauna_params
       params.permit(:sauna_id)
     end
+
 
 end
