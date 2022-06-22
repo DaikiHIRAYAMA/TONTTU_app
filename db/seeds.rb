@@ -12,5 +12,12 @@ Sauna.create!(
     sauna_humidity: "10",
     water_temperature: "18",
     user_id: "1",
-
 )
+5.times do |n|
+    User.create!(
+      email: "test#{n + 1}@test.com",
+      name: "サウナ太郎#{n + 1}",
+      password: "password",
+      condition: 3,
+    )
+  end
