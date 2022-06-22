@@ -43,16 +43,20 @@
   <% end %>
   
   <script>
-  function hoge() {
-    for (let i = 0; i <= '<%=  (50000 + 5000 * ( 3 - current_user.condition ) )/(37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) )).floor %>'; i++) {
-      // result.textContentはdocument.getElementById('result');を省略
-      setTimeout(() => { result.textContent = ('<%=  (50000 + 5000 * ( 3 - current_user.condition ) )/(37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) )).floor %>' - i); }, i * 1000);
-    }
-    if(hasEmptyInput) {
-    alert('理想の時間を超えました');
+  function limit(){
+  alert('理想の時間を超えました');
   }
+
+  let st = '<%= (50000 + 5000 * ( 3 - current_user.condition ) )/(37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) )).floor %>'
+
+  function hoge() {
+    for (let i = 0; i <= st ; i++) {
+      // result.textContentはdocument.getElementById('result');を省略
+      setTimeout(() => { result.textContent = ( st - i); }, i * 1000);
+    }
   }
   window.onload = () => { hoge(); };
+  window.setTimeout(limit, st *1000);
   </script>
 
   <style>

@@ -27,7 +27,7 @@
   <% end %>
 
   <div class="main container">
-    <h1><span id="result">カウントダウン</span> seconds to go.</h1>
+    <h1><span id="result"></span> seconds to go.</h1>
   </div>
 
   <div class="actions">
@@ -37,16 +37,21 @@
   <% end %>
 
     <script>
-  function hoge() {
-    for (let i = 0; i <= '<%= ( (50000 + 5000 * ( 3 - current_user.condition ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>'; i++) {
-      // result.textContentはdocument.getElementById('result');を省略
-      setTimeout(() => { result.textContent = ('<%= ( (50000 + 5000 * ( 3 - current_user.condition ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>' - i); }, i * 1000);
-    }
-    if(hasEmptyInput) {
+  function limit(){
     alert('理想の時間を超えました');
   }
+
+  let wt = '<%= ( (50000 + 5000 * ( 3 - current_user.condition ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>'
+
+  function hoge() {
+    for (let i = 0; i <= wt ; i++) {
+      // result.textContentはdocument.getElementById('result');を省略
+      setTimeout(() => { result.textContent = ( wt - i); }, i * 1000);
+}
   }
   window.onload = () => { hoge(); };
+  window.setTimeout(limit, wt *1000);
+
   </script>
     <style>
   .main {

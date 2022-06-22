@@ -15,16 +15,21 @@
 
      <h3 class="text-center ">Push "TOTONOU" to start</h3>
 
+
   <div class="actions">
+
     <%= form.hidden_field :sauna_id, value: @sauna.id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.hidden_field :sauna_finish_time, value: DateTime.now %>
-    <%= form.hidden_field :water_start_time, value: DateTime.now %>
-    <%= form.hidden_field :water_finish_time, value: DateTime.now %>
-    <%= form.hidden_field :outside_start_time, value: DateTime.now %>
-    <%= form.hidden_field :outside_finish_time, value: DateTime.now %>
+    <%= form.hidden_field :sauna_finish_time, value: 20200101000000 %>
+    <%= form.hidden_field :water_start_time, value: 20200101000000%>
+    <%= form.hidden_field :water_finish_time, value: 20200101000000 %>
+    <%= form.hidden_field :outside_start_time, value: 20200101000000 %>
+    <%= form.hidden_field :outside_finish_time, value: 20200101000000 %>
+    
 
     <%= form.hidden_field :sauna_start_time, value: DateTime.now %>
+
+    
    <p class="text-center "><%= form.submit "TOTONOU" , class: " btn btn-malformation btn-outline-danger" %></p>
   </div>
 
