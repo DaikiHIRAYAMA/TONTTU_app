@@ -127,7 +127,7 @@ class TimersController < ApplicationController
     end
 
     def timer_params0
-      params.require(:timer).permit(:sauna_start_time, :sauna_id, :id , :user_id)
+      params.require(:timer).permit(:sauna_start_time, :sauna_id, :id , :user_id, :sauna_finish_time, :water_start_time, :water_finish_time, :outside_start_time, :outside_finish_time)
     end
 
     def sauna_params

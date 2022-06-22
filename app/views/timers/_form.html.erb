@@ -18,6 +18,12 @@
   <div class="actions">
     <%= form.hidden_field :sauna_id, value: @sauna.id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :sauna_finish_time, value: Datetime.now %>
+    <%= form.hidden_field :water_start_time, value: Datetime.now %>
+    <%= form.hidden_field :water_finish_time, value: Datetime.now %>
+    <%= form.hidden_field :outside_start_time, value: Datetime.now %>
+    <%= form.hidden_field :outside_finish_time, value: Datetime.now %>
+
     <%= form.hidden_field :sauna_start_time, value: DateTime.now %>
    <p class="text-center "><%= form.submit "TOTONOU" , class: " btn btn-malformation btn-outline-danger" %></p>
   </div>
