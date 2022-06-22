@@ -34,7 +34,7 @@
 
  
 ## ワイヤーフレーム
-
+![スライド1](https://user-images.githubusercontent.com/102858958/175008747-cf299169-6f90-4d5b-ae57-d4ce5343502c.JPG)
 ![スライド2](https://user-images.githubusercontent.com/102858958/175008659-b64fba00-1663-490f-93f4-494ecd59bae4.JPG)
 ![スライド3](https://user-images.githubusercontent.com/102858958/175008664-841d9c55-e631-4f30-9df6-8bea4e7919de.JPG)
 ![スライド4](https://user-images.githubusercontent.com/102858958/175008667-34e40f45-79a4-4664-ba54-8e7f99e8d259.JPG)
@@ -52,5 +52,5 @@
 ![スライド16](https://user-images.githubusercontent.com/102858958/175008724-eebff8ea-b508-4478-b511-8ab242c211fd.JPG)
 ![スライド17](https://user-images.githubusercontent.com/102858958/175008729-83095eda-6c3f-49eb-85a9-0e3c8f2a0cba.JPG)
 ![スライド18](https://user-images.githubusercontent.com/102858958/175008739-0a10fe70-149a-4f7b-a0fb-3568de50d3b2.JPG)
-![スライド1](https://user-images.githubusercontent.com/102858958/175008747-cf299169-6f90-4d5b-ae57-d4ce5343502c.JPG)
+
 
