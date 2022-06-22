@@ -38,7 +38,7 @@
 
     <script>
   function hoge() {
-    for (let i = 0; i < '<%= ( (50000 + 5000 * ( 3 - current_user.condition ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>'; i++) {
+    for (let i = 0; i <= '<%= ( (50000 + 5000 * ( 3 - current_user.condition ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>'; i++) {
       // result.textContentはdocument.getElementById('result');を省略
       setTimeout(() => { result.textContent = ('<%= ( (50000 + 5000 * ( 3 - current_user.condition ) ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>' - i); }, i * 1000);
     }

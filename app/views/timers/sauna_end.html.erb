@@ -44,7 +44,7 @@
   
   <script>
   function hoge() {
-    for (let i = 0; i < '<%=  (50000 + 5000 * ( 3 - current_user.condition ) )/(37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) )).floor %>'; i++) {
+    for (let i = 0; i <= '<%=  (50000 + 5000 * ( 3 - current_user.condition ) )/(37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) )).floor %>'; i++) {
       // result.textContentはdocument.getElementById('result');を省略
       setTimeout(() => { result.textContent = ('<%=  (50000 + 5000 * ( 3 - current_user.condition ) )/(37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) )).floor %>' - i); }, i * 1000);
     }
