@@ -31,7 +31,8 @@
 <br>
 
   <div class="actions">
-    <%= hidden_field_tag :water_start_time, DateTime.now %>
+    
+    <%= form.hidden_field :water_start_time, value: DateTime.now %>
     <p class="text-center  "><%= form.submit "Take a water bath" , class: " btn btn-malformation btn-outline-primary" %></p>
   </div>
   <% end %>

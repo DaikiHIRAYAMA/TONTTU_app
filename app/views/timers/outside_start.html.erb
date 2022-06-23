@@ -28,7 +28,7 @@
 
 
   <div class="actions">
-    <%= hidden_field_tag :outside_start_time, DateTime.now %>
+    <%= form.hidden_field :outside_start_time, value: DateTime.now %>
     <p class="text-center  "><%= form.submit "Take a Air bath" , class: " btn btn-malformation btn-outline-success" %></p>
   </div>
   <% end %>

@@ -15,7 +15,7 @@
   <body>
 
 
-<%= form_with(model: @timer, local: true) do |form| %>
+<%= form_with(model: @timer,url: timer_path(@timer), local: true) do |form| %>
   <% if @timer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@timer.errors.count, "error") %> prohibited this timer from being saved:</h2>
@@ -35,9 +35,14 @@
 
 
   <div class="actions">
-    <%= hidden_field_tag :sauna_finish_time, DateTime.now %>
+  
+  
+    <%= form.hidden_field :sauna_finish_time, value: DateTime.now %>
     
     <p class="text-center  "><%= form.submit "Exit Sauna" , class: " btn btn-malformation btn-outline-danger" %></p>
+  
+  
+  
   </div>
 
   <% end %>

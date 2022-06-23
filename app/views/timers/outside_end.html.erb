@@ -32,8 +32,7 @@
   <% end %>
 
   <div class="actions">
-    <%= hidden_field_tag :outside_finish_time, DateTime.now %>
-    
+    <%= form.hidden_field :outside_finish_time, value: DateTime.now %>  
     <p class="text-center  "><%= form.submit "TOTONOTTA" , class: " btn btn-malformation btn-outline-success" %></p>
 
   </div>
