@@ -71,12 +71,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: host }
 
   ActionMailer::Base.smtp_settings = {
-    :port           => 587,
-    :address        => smtp.gmail.com,
-    :user_name      => ENV['SEND_MAIL'],
-    :password       => ENV['GMAIL_PASSWORD'],
-    :domain         => 'gmail.com',
-    :authentication => :plain,
+    address:"smtp.gmail.com",
+    domain: 'gmail.com',
+    port:587,
+    user_name: ENV['SEND_MAIL'],
+    password: ENV['GMAIL_PASSWORD'],
+    authentication: :login
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
