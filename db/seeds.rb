@@ -6,13 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Sauna.create!(
-    name: "サウナ",
-    sauna_temperature: "90" ,
-    sauna_humidity: "10",
-    water_temperature: "18",
-    user_id: "1",
-)
+
 5.times do |n|
     User.create!(
       email: "test#{n + 1}@test.com",
@@ -20,4 +14,11 @@ Sauna.create!(
       password: "password",
       condition: 3,
     )
+    Sauna.create!(
+      name: "サウナ",
+      sauna_temperature: "90" ,
+      sauna_humidity: "10",
+      water_temperature: "18",
+      user_id: "#{n + 1}",
+  )
   end

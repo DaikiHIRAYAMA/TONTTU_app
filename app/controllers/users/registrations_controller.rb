@@ -50,6 +50,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
+  def sauna_params
+    params.require(:sauna).permit(:name, :sauna_temperature, :sauna_humidity, :water_temperature, :user_id)
+  end
+
   def correct_user
     @user = User.find(params[:id])
     redirect_to current_user unless current_user?(@user)

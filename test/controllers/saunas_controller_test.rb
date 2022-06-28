@@ -20,7 +20,7 @@ class SaunasControllerTest < ActionDispatch::IntegrationTest
       post saunas_url, params: { sauna: { name: @sauna.name, sauna_humidity: @sauna.sauna_humidity, sauna_temperature: @sauna.sauna_temperature, water_temperature: @sauna.water_temperature } }
     end
 
-    assert_redirected_to sauna_url(Sauna.last)
+    assert_redirected_to sauna_url(Sauna.where(user_id: current_user.id).last)
   end
 
   test "should show sauna" do

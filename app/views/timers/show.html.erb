@@ -27,7 +27,7 @@
       <img src="/sauna.png" class="card-img-top image_size_m0" alt="sauna" style="display: block; margin: auto;">
       <div class="card-body">
         <h5 class="card-title text-center">サウナ室時間</h5>
-        <h2 class="card-text text-center"><%= (@timer.sauna_finish_time - @timer.sauna_start_time).ceil %>秒</h2>
+        <h2 class="card-text text-center"><%= (@timer.water_start_time - @timer.sauna_finish_time).ceil %>秒</h2>
       </div>
 
     </div>
@@ -37,7 +37,7 @@
       <img src="/water.png" class="card-img-top image_size_m1 " alt="water" style="display: block; margin: auto;" >
       <div class="card-body">
         <h5 class="card-title text-center">水風呂時間</h5>
-        <h2 class="card-text text-center"> <%= (@timer.water_finish_time - @timer.water_start_time).ceil %>秒</h2>
+        <h2 class="card-text text-center"> <%= (@timer.outside_start_time - @timer.water_finish_time).ceil %>秒</h2>
       </div>
 
     </div>
@@ -47,7 +47,7 @@
       <img src="/outside.png" class="card-img-top image_size_m2 " alt="outside" style="display: block; margin: auto;" >
       <div class="card-body">
         <h5 class="card-title text-center">外気浴時間</h5>
-        <h2 class="card-text text-center"> <%= (@timer.outside_finish_time - @timer.outside_start_time).ceil %>秒</h2>
+        <h2 class="card-text text-center"> <%= (@timer.updated_at - @timer.outside_finish_time).ceil %>秒</h2>
       </div>
 
     </div>

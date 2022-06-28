@@ -112,7 +112,7 @@ class TimersController < ApplicationController
     end
 
     def set_sauna
-      @sauna = Sauna.last
+      @sauna = Sauna.where(user_id: current_user.id).last
     end
     
     def set_user
