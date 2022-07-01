@@ -34,8 +34,8 @@
         <td><%= (timer.water_start_time - timer.sauna_finish_time).ceil %>秒</td>
         <td><%= (timer.outside_start_time - timer.water_finish_time).ceil %>秒</td>
         <td><%= (timer.updated_at - timer.outside_finish_time).ceil %>秒</td>
-        <td><%= link_to 'Show', timer %></td>
-        <td><%= link_to 'Destroy', timer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', timer %></td>
+        <td><%= link_to '削除', timer, method: :delete, data: { confirm: '本当に削除してもよろしいですか?' } %></td>
       </tr>
     <% end %>
   </tbody>
