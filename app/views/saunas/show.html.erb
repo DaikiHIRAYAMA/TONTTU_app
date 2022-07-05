@@ -17,11 +17,8 @@
 <p class="text-center">温度:<%= @sauna.sauna_temperature %>度 湿度:<%= @sauna.sauna_humidity %>% 水温:<%= @sauna.water_temperature %>度</p>
 
 
-
- <% tc =  (50000 - 5000 * ( 3 ) ) %>
- <% ft =  37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) ) %>
- <% ist = tc / ft %>
- <% iwt = tc /(( 36.5 - @sauna.water_temperature  ) * ( ft - @sauna.water_temperature )) %>
+ <% st = (50000 )/(37 - ((37- @sauna.sauna_temperature ) / ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) )).floor %>
+ <% wt = ( (50000 ) /(( 36.5 - @sauna.water_temperature  ) * ( ( 1.25 - 0.0014 * @sauna.sauna_humidity )) -0.29 * @sauna.sauna_temperature * ( 1 - ( @sauna.sauna_humidity / 100 ) - @sauna.water_temperature )) ).floor %>
 
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -30,7 +27,7 @@
       <img src="/sauna.png" class="card-img-top image_size_m0" alt="sauna" style="display: block; margin: auto;">
       <div class="card-body">
         <h5 class="card-title text-center">疲労度平均時　理想サウナ時間</h5>
-        <h2 class="card-text text-center"> <%= ist.floor %>秒</h2>
+        <h2 class="card-text text-center"> <%= st.floor %>秒</h2>
       </div>
     </div>
   </div>
@@ -39,7 +36,7 @@
       <img src="/water.png" class="card-img-top image_size_m " alt="water" style="display: block; margin: auto;" >
       <div class="card-body">
         <h5 class="card-title text-center">疲労度平均時　理想水風呂時間</h5>
-        <h2 class="card-text text-center ">  <%= iwt.floor  %>秒</h2>
+        <h2 class="card-text text-center ">  <%= wt.floor  %>秒</h2>
       </div>
     </div>
   </div>
